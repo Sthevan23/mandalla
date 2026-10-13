@@ -52,13 +52,92 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
         ]);
     }
 
-    $typeCycle = ['vestidos', 'conjuntos', 'blusas', 'saias', 'calcas', 'vestidos', 'conjuntos', 'blusas'];
-    $namesByType = [
-        'vestidos' => ['Vestido Bali Midi', 'Vestido Strapless Bali', 'Vestido Curto Verão 27', 'Vestido Longo Brisa', 'Vestido Envelope Bali', 'Vestido Neutro Areia'],
-        'conjuntos' => ['Conjunto Bali Off-White', 'Conjunto Peplum Dourado', 'Conjunto Textura Artesanal', 'Conjunto Resort Wear', 'Conjunto Botões Ouro', 'Conjunto Linho Bali'],
-        'blusas' => ['Blusa Ombro a Ombro Bali', 'Top Cropped Linho Bali', 'Blusa Cetim Areia Bali', 'Top Alça Fina Bali', 'Camisa Leve Bali', 'Blusa Bordada Verão'],
-        'saias' => ['Saia Midi Bali Natural', 'Saia Flores Bali', 'Saia Plissada Verão', 'Saia Linho Creme', 'Saia Curta Tropical', 'Saia Envelope Bali'],
-        'calcas' => ['Calça Wide Bali Creme', 'Calça Alfaiataria Neutra', 'Calça Linho Solta', 'Pantalona Bali', 'Calça Reta Areia', 'Shorts Linho Tropical'],
+    // Nomes únicos (sem numeração) — Coleção Bali
+    $looks = [
+        ['vestidos', 'Vestido Midi Ubud'],
+        ['conjuntos', 'Conjunto Peplum Dourado'],
+        ['blusas', 'Blusa Cetim Areia'],
+        ['saias', 'Saia Linho Creme'],
+        ['calcas', 'Calça Reta Areia'],
+        ['vestidos', 'Vestido Neutro Seminyak'],
+        ['conjuntos', 'Conjunto Off-White Canggu'],
+        ['blusas', 'Top Cropped Linho'],
+        ['vestidos', 'Vestido Curto Brisa'],
+        ['conjuntos', 'Conjunto Resort Nusa'],
+        ['blusas', 'Camisa Leve Jimbaran'],
+        ['saias', 'Saia Envelope Natural'],
+        ['calcas', 'Calça Wide Creme'],
+        ['vestidos', 'Vestido Strapless Lua'],
+        ['conjuntos', 'Conjunto Textura Artesanal'],
+        ['blusas', 'Top Alça Fina Areia'],
+        ['vestidos', 'Vestido Envelope Kuta'],
+        ['conjuntos', 'Conjunto Linho Denpasar'],
+        ['blusas', 'Blusa Ombro a Ombro'],
+        ['saias', 'Saia Flores Tropicais'],
+        ['calcas', 'Calça Linho Solta'],
+        ['vestidos', 'Vestido Longo Brisa'],
+        ['conjuntos', 'Conjunto Botões Ouro'],
+        ['blusas', 'Blusa Bordada Verão'],
+        ['vestidos', 'Vestido Midi Palmeira'],
+        ['conjuntos', 'Conjunto Crochê Marfim'],
+        ['blusas', 'Blusa Decote V Soft'],
+        ['saias', 'Saia Midi Plissada Areia'],
+        ['calcas', 'Pantalona Fluida Bali'],
+        ['vestidos', 'Vestido Curto Renda'],
+        ['conjuntos', 'Conjunto Short e Cropped'],
+        ['blusas', 'Camisa Oversized Off'],
+        ['vestidos', 'Vestido Longo Envelope'],
+        ['conjuntos', 'Conjunto Saia e Top'],
+        ['blusas', 'Regata Linho Natural'],
+        ['saias', 'Saia Longa Fluida'],
+        ['calcas', 'Calça Alfaiataria Neutra'],
+        ['vestidos', 'Vestido Midi Alça Fina'],
+        ['conjuntos', 'Conjunto Kimono Leve'],
+        ['blusas', 'Blusa Manga Bufante'],
+        ['vestidos', 'Vestido Slip Dress Nude'],
+        ['conjuntos', 'Conjunto Tricot Areia'],
+        ['blusas', 'Top Tomara que Caia'],
+        ['saias', 'Saia Curta Evasê'],
+        ['calcas', 'Shorts Linho Tropical'],
+        ['vestidos', 'Vestido Chemise Creme'],
+        ['conjuntos', 'Conjunto Bata e Calça'],
+        ['blusas', 'Blusa Babados Suaves'],
+        ['vestidos', 'Vestido Midi Costela'],
+        ['conjuntos', 'Conjunto Listra Discreta'],
+        ['blusas', 'Camisa Tricoline Off'],
+        ['saias', 'Saia Midi Transpasse'],
+        ['calcas', 'Calça Cargo Leve'],
+        ['vestidos', 'Vestido Longo Fenda'],
+        ['conjuntos', 'Conjunto Colete Linho'],
+        ['blusas', 'Blusa Laço Delicado'],
+        ['vestidos', 'Vestido Tubinho Areia'],
+        ['conjuntos', 'Conjunto Pantalona'],
+        ['blusas', 'Top Frente Única'],
+        ['saias', 'Saia Godê Creme'],
+        ['calcas', 'Calça Jogger Neutra'],
+        ['vestidos', 'Vestido Midi Franzido'],
+        ['conjuntos', 'Conjunto Blazer Soft'],
+        ['blusas', 'Blusa Gola Alta Fina'],
+        ['vestidos', 'Vestido Longo Alças'],
+        ['conjuntos', 'Conjunto Saia Midi'],
+        ['blusas', 'Camisa Cropped Areia'],
+        ['saias', 'Saia Pareô Bali'],
+        ['calcas', 'Calça Wide Off-White'],
+        ['vestidos', 'Vestido Curto Alça Cruzada'],
+        ['conjuntos', 'Conjunto Top e Saia'],
+        ['blusas', 'Blusa Manga 3/4'],
+        ['vestidos', 'Vestido Midi Torcido'],
+        ['conjuntos', 'Conjunto Amplo Linho'],
+        ['blusas', 'Top Decote Quadrado'],
+        ['saias', 'Saia Longa Fenda'],
+        ['calcas', 'Calça Reta Creme'],
+        ['vestidos', 'Vestido Longo Drapeado'],
+        ['conjuntos', 'Conjunto Básico Premium'],
+        ['blusas', 'Blusa Assimétrica'],
+        ['vestidos', 'Vestido Midi Botões'],
+        ['conjuntos', 'Conjunto Verão Leve'],
+        ['blusas', 'Camisa Amarração'],
+        ['saias', 'Saia Midi Linho'],
     ];
     $colors = [
         ['Off-white', '#F5F0E8'],
@@ -94,14 +173,14 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
         }
         $seenHash[$hash] = true;
 
+        $look = $looks[$n] ?? ['vestidos', 'Peça Coleção Bali'];
         $n++;
-        $type = $typeCycle[($n - 1) % count($typeCycle)];
+        $type = $look[0];
+        $name = $look[1];
         if (!isset($cats[$type])) {
             $type = 'vestidos';
         }
         $catId = $cats[$type];
-        $nameList = $namesByType[$type];
-        $name = $nameList[($n - 1) % count($nameList)] . ' ' . str_pad((string) $n, 2, '0', STR_PAD_LEFT);
         $slug = 'bali-look-' . str_pad((string) $n, 3, '0', STR_PAD_LEFT);
         $price = [189.9, 219.9, 249.9, 279.9, 299.9, 329.9, 359.9][($n - 1) % 7];
         $featured = $n <= 8 ? 1 : 0;
@@ -111,7 +190,7 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
         $compare = $isSale ? round($price * 1.2, 2) : null;
         $cost = round($price * 0.42, 2);
         $sold = $best ? random_int(10, 35) : random_int(0, 8);
-        $desc = "Peça da Coleção Bali — Verão 27. Look {$n} da campanha Mandalla.";
+        $desc = "Peça da Coleção Bali — Verão 27. {$name}, em tons neutros e caimento leve para o dia a dia.";
 
         $insP->execute([$catId, $name, $slug, $desc, $price, $compare, $featured, $isNew, $isSale, $best, $cost, $sold]);
         $pid = (int) $pdo->lastInsertId();
@@ -142,7 +221,7 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
     }
 
     $set = $pdo->prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)');
-    $set->execute(['catalog_version', 'bali-v1']);
+    $set->execute(['catalog_version', 'bali-v2']);
     $set->execute(['hero_image', '/uploads/products/bali/bali-001.jpg']);
     $set->execute(['hero_title', 'Coleção Bali']);
     $set->execute(['hero_subtitle', 'Verão 27 — leveza, texturas artesanais e tons neutros inspirados em Bali.']);
