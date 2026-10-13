@@ -62,7 +62,7 @@ if (!file_exists($dbFile['database'])) {
             $pdo = App\Core\Database::connection();
             $version = (string) ($pdo->query("SELECT value FROM settings WHERE key = 'catalog_version'")->fetchColumn() ?: '');
             $baliCount = (int) $pdo->query("SELECT COUNT(*) FROM products WHERE slug LIKE 'bali-look-%'")->fetchColumn();
-            if ($version !== 'bali-v2' || $baliCount < 50) {
+            if ($version !== 'bali-v3' || $baliCount < 50) {
                 require_once __DIR__ . '/database/seed_bali_catalog.php';
                 mandalla_seed_bali_catalog($pdo, __DIR__);
             }

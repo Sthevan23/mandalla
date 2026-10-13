@@ -52,92 +52,91 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
         ]);
     }
 
-    // Nomes únicos (sem numeração) — Coleção Bali
-    $looks = [
-        ['vestidos', 'Vestido Midi Ubud'],
-        ['conjuntos', 'Conjunto Peplum Dourado'],
-        ['blusas', 'Blusa Cetim Areia'],
-        ['saias', 'Saia Linho Creme'],
-        ['calcas', 'Calça Reta Areia'],
-        ['vestidos', 'Vestido Neutro Seminyak'],
-        ['conjuntos', 'Conjunto Off-White Canggu'],
-        ['blusas', 'Top Cropped Linho'],
-        ['vestidos', 'Vestido Curto Brisa'],
-        ['conjuntos', 'Conjunto Resort Nusa'],
-        ['blusas', 'Camisa Leve Jimbaran'],
-        ['saias', 'Saia Envelope Natural'],
-        ['calcas', 'Calça Wide Creme'],
-        ['vestidos', 'Vestido Strapless Lua'],
-        ['conjuntos', 'Conjunto Textura Artesanal'],
-        ['blusas', 'Top Alça Fina Areia'],
-        ['vestidos', 'Vestido Envelope Kuta'],
-        ['conjuntos', 'Conjunto Linho Denpasar'],
-        ['blusas', 'Blusa Ombro a Ombro'],
-        ['saias', 'Saia Flores Tropicais'],
-        ['calcas', 'Calça Linho Solta'],
-        ['vestidos', 'Vestido Longo Brisa'],
-        ['conjuntos', 'Conjunto Botões Ouro'],
-        ['blusas', 'Blusa Bordada Verão'],
-        ['vestidos', 'Vestido Midi Palmeira'],
-        ['conjuntos', 'Conjunto Crochê Marfim'],
-        ['blusas', 'Blusa Decote V Soft'],
-        ['saias', 'Saia Midi Plissada Areia'],
-        ['calcas', 'Pantalona Fluida Bali'],
-        ['vestidos', 'Vestido Curto Renda'],
-        ['conjuntos', 'Conjunto Short e Cropped'],
-        ['blusas', 'Camisa Oversized Off'],
-        ['vestidos', 'Vestido Longo Envelope'],
-        ['conjuntos', 'Conjunto Saia e Top'],
-        ['blusas', 'Regata Linho Natural'],
-        ['saias', 'Saia Longa Fluida'],
-        ['calcas', 'Calça Alfaiataria Neutra'],
-        ['vestidos', 'Vestido Midi Alça Fina'],
-        ['conjuntos', 'Conjunto Kimono Leve'],
-        ['blusas', 'Blusa Manga Bufante'],
-        ['vestidos', 'Vestido Slip Dress Nude'],
-        ['conjuntos', 'Conjunto Tricot Areia'],
-        ['blusas', 'Top Tomara que Caia'],
-        ['saias', 'Saia Curta Evasê'],
-        ['calcas', 'Shorts Linho Tropical'],
-        ['vestidos', 'Vestido Chemise Creme'],
-        ['conjuntos', 'Conjunto Bata e Calça'],
-        ['blusas', 'Blusa Babados Suaves'],
-        ['vestidos', 'Vestido Midi Costela'],
-        ['conjuntos', 'Conjunto Listra Discreta'],
-        ['blusas', 'Camisa Tricoline Off'],
-        ['saias', 'Saia Midi Transpasse'],
-        ['calcas', 'Calça Cargo Leve'],
-        ['vestidos', 'Vestido Longo Fenda'],
-        ['conjuntos', 'Conjunto Colete Linho'],
-        ['blusas', 'Blusa Laço Delicado'],
-        ['vestidos', 'Vestido Tubinho Areia'],
-        ['conjuntos', 'Conjunto Pantalona'],
-        ['blusas', 'Top Frente Única'],
-        ['saias', 'Saia Godê Creme'],
-        ['calcas', 'Calça Jogger Neutra'],
-        ['vestidos', 'Vestido Midi Franzido'],
-        ['conjuntos', 'Conjunto Blazer Soft'],
-        ['blusas', 'Blusa Gola Alta Fina'],
-        ['vestidos', 'Vestido Longo Alças'],
-        ['conjuntos', 'Conjunto Saia Midi'],
-        ['blusas', 'Camisa Cropped Areia'],
-        ['saias', 'Saia Pareô Bali'],
-        ['calcas', 'Calça Wide Off-White'],
-        ['vestidos', 'Vestido Curto Alça Cruzada'],
-        ['conjuntos', 'Conjunto Top e Saia'],
-        ['blusas', 'Blusa Manga 3/4'],
-        ['vestidos', 'Vestido Midi Torcido'],
-        ['conjuntos', 'Conjunto Amplo Linho'],
-        ['blusas', 'Top Decote Quadrado'],
-        ['saias', 'Saia Longa Fenda'],
-        ['calcas', 'Calça Reta Creme'],
-        ['vestidos', 'Vestido Longo Drapeado'],
-        ['conjuntos', 'Conjunto Básico Premium'],
-        ['blusas', 'Blusa Assimétrica'],
-        ['vestidos', 'Vestido Midi Botões'],
-        ['conjuntos', 'Conjunto Verão Leve'],
-        ['blusas', 'Camisa Amarração'],
-        ['saias', 'Saia Midi Linho'],
+    // Nome amarrado à foto (chave = arquivo). Capas 001/002 e logo 086 ficam de fora.
+    $looksByFile = [
+        'bali-003.jpg' => ['vestidos', 'Vestido Longo Cru Bordado'],
+        'bali-004.jpg' => ['vestidos', 'Vestido Cru Alça Contas'],
+        'bali-005.jpg' => ['vestidos', 'Vestido Longo Margaridas'],
+        'bali-006.jpg' => ['vestidos', 'Vestido Marfim Alça Laço'],
+        'bali-007.jpg' => ['vestidos', 'Vestido Longo Branco Bordado'],
+        'bali-008.jpg' => ['conjuntos', 'Macacão Azul Céu Flores'],
+        'bali-009.jpg' => ['conjuntos', 'Macacão Tomara que Caia Azul'],
+        'bali-010.jpg' => ['vestidos', 'Vestido Halter Crochê Branco'],
+        'bali-011.jpg' => ['vestidos', 'Vestido Halter Flor Branca'],
+        'bali-012.jpg' => ['vestidos', 'Vestido Midi Amarelo Corrente'],
+        'bali-013.jpg' => ['vestidos', 'Vestido Midi Limão Faixa'],
+        'bali-014.jpg' => ['vestidos', 'Vestido Amarelo Alça Dourada'],
+        'bali-015.jpg' => ['conjuntos', 'Conjunto Crochê Branco Longo'],
+        'bali-016.jpg' => ['conjuntos', 'Conjunto Halter Crochê Marfim'],
+        'bali-017.jpg' => ['conjuntos', 'Conjunto Mini Branco Botões'],
+        'bali-018.jpg' => ['conjuntos', 'Conjunto Corset Saia Off-White'],
+        'bali-019.jpg' => ['vestidos', 'Vestido Midi Broderie Branco'],
+        'bali-020.jpg' => ['vestidos', 'Vestido Broderie Borlas'],
+        'bali-021.jpg' => ['vestidos', 'Vestido Longo Cinto Areia'],
+        'bali-022.jpg' => ['vestidos', 'Vestido Corselete Fivela'],
+        'bali-023.jpg' => ['conjuntos', 'Conjunto Top Bordado Saia Longa'],
+        'bali-024.jpg' => ['conjuntos', 'Conjunto Cropped Floral Bordado'],
+        'bali-025.jpg' => ['vestidos', 'Vestido Tubinho Pétala'],
+        'bali-026.jpg' => ['vestidos', 'Vestido Curto Pétala Bordada'],
+        'bali-027.jpg' => ['conjuntos', 'Conjunto Amarelo Pantalona'],
+        'bali-028.jpg' => ['conjuntos', 'Conjunto Trespassado Limão'],
+        'bali-029.jpg' => ['conjuntos', 'Conjunto Ombro Único Branco'],
+        'bali-030.jpg' => ['conjuntos', 'Conjunto Ombro Único Botões'],
+        'bali-031.jpg' => ['conjuntos', 'Conjunto Branco Botões Dourados'],
+        'bali-032.jpg' => ['conjuntos', 'Conjunto Flor Amarelo Pantalona'],
+        'bali-033.jpg' => ['conjuntos', 'Conjunto Cropped Flor Sol'],
+        'bali-034.jpg' => ['vestidos', 'Vestido Midi Azul Céu'],
+        'bali-035.jpg' => ['vestidos', 'Vestido Azul Bebê Recorte'],
+        'bali-036.jpg' => ['conjuntos', 'Conjunto Ciganinha Saia Longa'],
+        'bali-037.jpg' => ['conjuntos', 'Conjunto Ombro a Ombro Branco'],
+        'bali-038.jpg' => ['conjuntos', 'Conjunto Ciganinha Bordado Bege'],
+        'bali-039.jpg' => ['conjuntos', 'Conjunto Cru Saia Longa'],
+        'bali-040.jpg' => ['conjuntos', 'Conjunto Cropped Saia Bordada'],
+        'bali-041.jpg' => ['conjuntos', 'Conjunto Amarelo Alça Fina'],
+        'bali-042.jpg' => ['conjuntos', 'Conjunto Cropped Amarelo Renda'],
+        'bali-043.jpg' => ['conjuntos', 'Conjunto Limão Galão'],
+        'bali-044.jpg' => ['vestidos', 'Vestido Midi Branco Fenda'],
+        'bali-045.jpg' => ['vestidos', 'Vestido Alfaiataria Branco'],
+        'bali-046.jpg' => ['conjuntos', 'Conjunto Coral Saia Longa'],
+        'bali-047.jpg' => ['conjuntos', 'Conjunto Coral Borlas'],
+        'bali-048.jpg' => ['conjuntos', 'Conjunto Salmão Floral Bordado'],
+        'bali-049.jpg' => ['conjuntos', 'Macacão Amarelo Laço'],
+        'bali-050.jpg' => ['conjuntos', 'Macacão Pantalona Borboleta'],
+        'bali-051.jpg' => ['vestidos', 'Vestido Midi Amarelo Botões'],
+        'bali-052.jpg' => ['vestidos', 'Vestido Amarelo Bolso Cinto'],
+        'bali-053.jpg' => ['conjuntos', 'Conjunto Colete Pantalona Branco'],
+        'bali-054.jpg' => ['conjuntos', 'Conjunto Colete Alfaiataria Off'],
+        'bali-055.jpg' => ['conjuntos', 'Conjunto Cropped Zíper Branco'],
+        'bali-056.jpg' => ['conjuntos', 'Conjunto Halter Flor Midi'],
+        'bali-057.jpg' => ['conjuntos', 'Conjunto Halter Sol Amarelo'],
+        'bali-058.jpg' => ['conjuntos', 'Conjunto Halter Flor Bordada'],
+        'bali-059.jpg' => ['vestidos', 'Vestido Curto Flor Pêssego'],
+        'bali-060.jpg' => ['vestidos', 'Vestido Mini Coral Rosa'],
+        'bali-061.jpg' => ['conjuntos', 'Conjunto Halter Laço Baunilha'],
+        'bali-062.jpg' => ['conjuntos', 'Conjunto Halter Plissado Baunilha'],
+        'bali-063.jpg' => ['conjuntos', 'Conjunto Cru Decote V'],
+        'bali-064.jpg' => ['conjuntos', 'Conjunto Linho Manga Curta'],
+        'bali-065.jpg' => ['vestidos', 'Vestido Longo Estampa Laranja'],
+        'bali-066.jpg' => ['vestidos', 'Vestido Tangerina Costas Amarradas'],
+        'bali-067.jpg' => ['conjuntos', 'Conjunto Short Flor Branco'],
+        'bali-068.jpg' => ['conjuntos', 'Conjunto Cropped Short Bolsos'],
+        'bali-069.jpg' => ['conjuntos', 'Conjunto Amarelo Detalhe Folha'],
+        'bali-070.jpg' => ['conjuntos', 'Conjunto Areia Alça Amarração'],
+        'bali-071.jpg' => ['conjuntos', 'Conjunto Cropped Crochê Areia'],
+        'bali-072.jpg' => ['conjuntos', 'Conjunto Pêssego Cinto'],
+        'bali-073.jpg' => ['conjuntos', 'Conjunto Pêssego Bolsos'],
+        'bali-074.jpg' => ['conjuntos', 'Conjunto Zíper Saia Mini'],
+        'bali-075.jpg' => ['conjuntos', 'Conjunto Branco Zíper Dourado'],
+        'bali-076.jpg' => ['conjuntos', 'Conjunto Colete Linho Bege'],
+        'bali-077.jpg' => ['conjuntos', 'Conjunto Colete Costas Botões'],
+        'bali-078.jpg' => ['conjuntos', 'Conjunto Tomara que Caia Amarelo'],
+        'bali-079.jpg' => ['conjuntos', 'Conjunto Amarelo Laço Cintura'],
+        'bali-080.jpg' => ['vestidos', 'Vestido Midi Pêssego Botões'],
+        'bali-081.jpg' => ['vestidos', 'Vestido Midi Abotoado Damasco'],
+        'bali-082.jpg' => ['conjuntos', 'Conjunto Short Azul Céu'],
+        'bali-083.jpg' => ['conjuntos', 'Conjunto Short Azul Flor'],
+        'bali-084.jpg' => ['conjuntos', 'Conjunto Branco Calça Reta'],
+        'bali-085.jpg' => ['conjuntos', 'Conjunto Renda Branco Fivela'],
     ];
     $colors = [
         ['Off-white', '#F5F0E8'],
@@ -145,6 +144,8 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
         ['Creme', '#E8DFD4'],
         ['Natural', '#D4C4B0'],
         ['Branco', '#FFFFFF'],
+        ['Amarelo', '#E8C84A'],
+        ['Azul céu', '#A7C7E7'],
     ];
     $sizes = ['P', 'M', 'G', 'GG'];
 
@@ -159,10 +160,12 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
     $n = 0;
     foreach ($manifest as $item) {
         $idx = (int) ($item['index'] ?? 0);
-        if ($idx <= 2) {
+        // capas + logo final
+        if ($idx <= 2 || $idx >= 86) {
             continue;
         }
         $path = (string) ($item['file'] ?? '');
+        $file = basename($path);
         $abs = $root . '/public' . $path;
         if ($path === '' || !is_file($abs)) {
             continue;
@@ -173,7 +176,10 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
         }
         $seenHash[$hash] = true;
 
-        $look = $looks[$n] ?? ['vestidos', 'Peça Coleção Bali'];
+        if (!isset($looksByFile[$file])) {
+            continue;
+        }
+        $look = $looksByFile[$file];
         $n++;
         $type = $look[0];
         $name = $look[1];
@@ -190,7 +196,7 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
         $compare = $isSale ? round($price * 1.2, 2) : null;
         $cost = round($price * 0.42, 2);
         $sold = $best ? random_int(10, 35) : random_int(0, 8);
-        $desc = "Peça da Coleção Bali — Verão 27. {$name}, em tons neutros e caimento leve para o dia a dia.";
+        $desc = "Peça da Coleção Bali — Verão 27. {$name}.";
 
         $insP->execute([$catId, $name, $slug, $desc, $price, $compare, $featured, $isNew, $isSale, $best, $cost, $sold]);
         $pid = (int) $pdo->lastInsertId();
@@ -221,7 +227,7 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
     }
 
     $set = $pdo->prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)');
-    $set->execute(['catalog_version', 'bali-v2']);
+    $set->execute(['catalog_version', 'bali-v3']);
     $set->execute(['hero_image', '/uploads/products/bali/bali-001.jpg']);
     $set->execute(['hero_title', 'Coleção Bali']);
     $set->execute(['hero_subtitle', 'Verão 27 — leveza, texturas artesanais e tons neutros inspirados em Bali.']);
