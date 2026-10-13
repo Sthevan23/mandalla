@@ -218,7 +218,7 @@ if (!file_exists($sampleImage)) {
 }
 
 // Substitui o demo Unsplash pela Coleção Bali (fotos locais)
-require __DIR__ . '/seed_bali_catalog.php';
+require_once __DIR__ . '/seed_bali_catalog.php';
 $bali = mandalla_seed_bali_catalog($pdo, dirname(__DIR__));
 
 echo "Banco Mandalla criado. Bali: {$bali['created']} produtos (dups={$bali['dups']}).\n";

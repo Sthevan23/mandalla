@@ -6,6 +6,7 @@
  *
  * @return array{created:int, removed:int, dups:int}
  */
+if (!function_exists('mandalla_seed_bali_catalog')) {
 function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
 {
     $manifestFile = $root . '/public/uploads/products/bali/manifest.json';
@@ -141,6 +142,7 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
     }
 
     $set = $pdo->prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)');
+    $set->execute(['catalog_version', 'bali-v1']);
     $set->execute(['hero_image', '/uploads/products/bali/bali-001.jpg']);
     $set->execute(['hero_title', 'Coleção Bali']);
     $set->execute(['hero_subtitle', 'Verão 27 — leveza, texturas artesanais e tons neutros inspirados em Bali.']);
@@ -169,3 +171,4 @@ function mandalla_seed_bali_catalog(PDO $pdo, string $root): array
 
     return ['created' => $n, 'removed' => $removed, 'dups' => $dups];
 }
+} // function_exists

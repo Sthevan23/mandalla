@@ -54,4 +54,22 @@ if ($config['debug']) {
 $dbFile = require __DIR__ . '/config/database.php';
 if (!file_exists($dbFile['database'])) {
     require __DIR__ . '/database/seed.php';
+} else {
+    // Hostinger: se o banco ainda for o catálogo antigo, troca pela Coleção Bali sozinho
+    $baliManifest = __DIR__ . '/public/uploads/products/bali/manifest.json';
+    if (is_file($baliManifest)) {
+        try {
+            $pdo = App\Core\Database::connection();
+            $version = (string) ($pdo->query("SELECT value FROM settings WHERE key = 'catalog_version'")->fetchColumn() ?: '');
+            $baliCount = (int) $pdo->query("SELECT COUNT(*) FROM products WHERE slug LIKE 'bali-look-%'")->fetchColumn();
+            if ($version !== 'bali-v1' || $baliCount < 50) {
+                require_once __DIR__ . '/database/seed_bali_catalog.php';
+                mandalla_seed_bali_catalog($pdo, __DIR__);
+            }
+        } catch (Throwable $e) {
+            if (!empty($config['debug'])) {
+                throw $e;
+            }
+        }
+    }
 }

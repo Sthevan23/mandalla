@@ -4,7 +4,7 @@
  * Recria produtos Bali com 1 foto única por página (CLI).
  */
 require dirname(__DIR__) . '/bootstrap.php';
-require __DIR__ . '/seed_bali_catalog.php';
+require_once __DIR__ . '/seed_bali_catalog.php';
 
 use App\Core\Database;
 

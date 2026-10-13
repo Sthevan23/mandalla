@@ -61,19 +61,17 @@ hPanel → **Configuração PHP**:
 - Versão **8.2+** (ideal 8.3)
 - Extensões ativas: `pdo_sqlite`, `sqlite3`, `mbstring`, `openssl`
 
-### 6. Atualizar catálogo Bali (fotos novas)
+### 6. Catálogo Bali (fotos)
 
-Se a home mostrar produtos antigos (Unsplash) ou a Coleção Bali estiver vazia:
+O projeto já vem com `database/mandalla.db` + fotos em `public/uploads/products/bali/`.
 
-1. Confirme que a pasta `public/uploads/products/bali/` subiu com as fotos
-2. Abra **uma vez**:
+Ao subir os arquivos, a loja **atualiza sozinha** na primeira visita (troca o catálogo antigo pela Bali).
 
-```text
-https://SEU-DOMINIO/atualizar-catalogo.php?key=mandalla-bali-2026
-```
-
-3. **Apague** o arquivo `public/atualizar-catalogo.php` no File Manager
-4. Atualize a home (Ctrl+F5)
+Se ainda aparecer foto antiga:
+1. Confirme que subiu `public/uploads/products/bali/` e `database/mandalla.db`
+2. Ou abra uma vez: `https://SEU-DOMINIO/atualizar-catalogo.php?key=mandalla-bali-2026`
+3. Apague `public/atualizar-catalogo.php` depois
+4. Ctrl+F5 na home
 
 ### 7. Testar
 

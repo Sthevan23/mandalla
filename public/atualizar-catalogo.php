@@ -16,7 +16,7 @@ if ($key !== 'mandalla-bali-2026') {
 }
 
 require dirname(__DIR__) . '/bootstrap.php';
-require dirname(__DIR__) . '/database/seed_bali_catalog.php';
+require_once dirname(__DIR__) . '/database/seed_bali_catalog.php';
 
 use App\Core\Database;
 

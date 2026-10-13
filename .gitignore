@@ -7,8 +7,7 @@ Thumbs.db
 .env
 .env.local
 
-# SQLite
-/database/mandalla.db
+# SQLite (mandalla.db sobe no Git para facilitar Hostinger)
 /database/*.db-journal
 /database/*.db-wal
 /database/*.db-shm
