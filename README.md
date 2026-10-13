@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mandalla — E-commerce de moda feminina (PHP)
 
-## Getting Started
+Loja virtual premium em **PHP puro (MVC)** com SQLite, catálogo, carrinho, checkout, WhatsApp, área da cliente e painel administrativo.
 
-First, run the development server:
+Sem Node.js / Next.js — pronto para Hostinger.
+
+## Requisitos
+
+- PHP 8.2+ com extensões: `pdo_sqlite`, `sqlite3`, `mbstring`, `openssl`
+- Apache com `mod_rewrite` (Hostinger já tem)
+
+## Local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+php -S localhost:8080 -t public public/router.php
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Na primeira execução o banco `database/mandalla.db` é criado com produtos de demonstração.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Acessos de demonstração
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Perfil | E-mail | Senha |
+|--------|--------|-------|
+| Admin | admin@mandalla.com | admin123 |
+| Cliente | cliente@exemplo.com | cliente123 |
 
-## Learn More
+**Altere essas senhas antes de publicar.**
 
-To learn more about Next.js, take a look at the following resources:
+## Cupons de exemplo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `MANDALLA10` — 10% (mín. R$ 150)
+- `BEMVINDA` — R$ 30 (mín. R$ 200)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estrutura
 
-## Deploy on Vercel
+```text
+app/          Controllers, Models, Views, Core
+config/       App e banco
+database/     schema.sql, seed.php, mandalla.db
+public/       Front controller, assets, uploads  ← document root
+storage/      Logs
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Hostinger
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Guia completo: **[HOSTINGER.md](HOSTINGER.md)**
+
+Resumo:
+
+1. Envie o projeto inteiro para `public_html`
+2. Aponte o document root para `public_html/public`
+3. Crie `.env` a partir de `.env.example` (`APP_URL`, `WHATSAPP`, `APP_DEBUG=false`)
+4. Permissão de escrita em `database/` e `public/uploads/`
+5. PHP 8.2+ com `pdo_sqlite`
+
+## Funcionalidades
+
+- Loja: home, catálogo com filtros, produto, favoritos, carrinho, cupom, checkout
+- Pedido no banco + mensagem pronta para WhatsApp
+- Pagamentos configuráveis (PIX / link / na entrega)
+- Admin: dashboard, produtos, pedidos, estoque, financeiro (CSV), clientes, configurações
+- SEO básico: meta tags, Open Graph, sitemap, robots, Schema.org

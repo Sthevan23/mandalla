@@ -1,41 +1,35 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+# OS / editor
 .DS_Store
+Thumbs.db
 *.pem
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# Env (não subir senhas / URL de produção)
+.env
+.env.local
 
-# env files (can opt-in for committing if needed)
-.env*
+# SQLite
+/database/mandalla.db
+/database/*.db-journal
+/database/*.db-wal
+/database/*.db-shm
 
-# vercel
-.vercel
+# Uploads gerados (mantém pasta)
+/public/uploads/banners/*
+!/public/uploads/banners/.gitkeep
+/public/uploads/products/_check/
+/public/uploads/products/_bali_previews/
+/storage/logs/*
+!/storage/logs/.gitkeep
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Lixo de ferramentas antigas (Next/Node) — não usar
+/node_modules/
+/.next/
+/out/
+/build/
+/package.json
+/package-lock.json
+/next.config.*
+/next-env.d.ts
+/tsconfig.json
+/eslint.config.*
+/AGENTS.md
