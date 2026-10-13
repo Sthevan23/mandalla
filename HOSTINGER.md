@@ -61,14 +61,28 @@ hPanel → **Configuração PHP**:
 - Versão **8.2+** (ideal 8.3)
 - Extensões ativas: `pdo_sqlite`, `sqlite3`, `mbstring`, `openssl`
 
-### 6. Testar
+### 6. Atualizar catálogo Bali (fotos novas)
+
+Se a home mostrar produtos antigos (Unsplash) ou a Coleção Bali estiver vazia:
+
+1. Confirme que a pasta `public/uploads/products/bali/` subiu com as fotos
+2. Abra **uma vez**:
+
+```text
+https://SEU-DOMINIO/atualizar-catalogo.php?key=mandalla-bali-2026
+```
+
+3. **Apague** o arquivo `public/atualizar-catalogo.php` no File Manager
+4. Atualize a home (Ctrl+F5)
+
+### 7. Testar
 
 1. `https://SEU-DOMINIO/` — home da loja  
-2. `https://SEU-DOMINIO/categoria/colecao-bali` — catálogo  
+2. `https://SEU-DOMINIO/categoria/colecao-bali` — catálogo Bali  
 3. `https://SEU-DOMINIO/admin` — painel  
 4. Troque a senha do admin e o número do WhatsApp
 
-Na primeira visita o banco SQLite é criado automaticamente (seed).
+Na primeira visita o banco SQLite é criado automaticamente (seed com Coleção Bali).
 
 ## Estrutura no servidor
 
